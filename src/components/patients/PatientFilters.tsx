@@ -1,6 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../store';
+
 
 interface PatientFiltersProps {
   searchQuery: string;
