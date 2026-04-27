@@ -11,34 +11,68 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   message = 'Loading…',
   fullPage = false,
 }) => {
-  const sizeMap = { sm: 24, md: 40, lg: 64 };
+  const sizeMap = { sm: 24, md: 40, lg: 56 };
+  const sw = { sm: 3, md: 3.5, lg: 4 };
   const px = sizeMap[size];
+  const stroke = sw[size];
 
-  const spinner = (
-    <div className={`spinner spinner--${size}`} aria-label={message} role="status">
-      <svg width={px} height={px} viewBox="0 0 50 50" fill="none">
-        <circle cx="25" cy="25" r="20" stroke="var(--color-primary-300)" strokeWidth="4" />
+  if (fullPage) {
+    return (
+      <div className="spinner-overlay" role="status" aria-label="Loading application" aria-busy="true">
+        {/* Brand */}
+        <div className="spinner-overlay__brand">
+          <div className="spinner-overlay__logo">
+            <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+              <path d="M16 6v20M6 16h20" stroke="white" strokeWidth="3.5" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div>
+            <p className="spinner-overlay__name">MedCore</p>
+            <p className="spinner-overlay__sub">Healthcare SaaS Platform</p>
+          </div>
+        </div>
+
+        {/* Arc spinner */}
+        <div className="spinner-overlay__track">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="22" stroke="var(--color-primary-100)" strokeWidth="4" />
+            <circle
+              cx="28" cy="28" r="22"
+              stroke="var(--color-primary-500)"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeDasharray="90 50"
+            />
+          </svg>
+        </div>
+
+        <p className="spinner-overlay__message">{message}</p>
+
+        {/* Pulsing dots */}
+        <div className="spinner-overlay__dots" aria-hidden="true">
+          <span className="spinner-overlay__dot" />
+          <span className="spinner-overlay__dot" />
+          <span className="spinner-overlay__dot" />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`spinner spinner--${size}`} role="status" aria-label={message}>
+      <svg width={px} height={px} viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="22" stroke="var(--color-primary-100)" strokeWidth={stroke} />
         <circle
-          cx="25" cy="25" r="20"
+          cx="28" cy="28" r="22"
           stroke="var(--color-primary-500)"
-          strokeWidth="4"
+          strokeWidth={stroke}
           strokeLinecap="round"
-          strokeDasharray="80 45"
+          strokeDasharray="90 50"
         />
       </svg>
       {message && <span className="spinner__label">{message}</span>}
     </div>
   );
-
-  if (fullPage) {
-    return (
-      <div className="spinner-overlay" aria-busy="true">
-        {spinner}
-      </div>
-    );
-  }
-
-  return spinner;
 };
 
 interface SkeletonProps {
