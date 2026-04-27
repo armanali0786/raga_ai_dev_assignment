@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UIState, Toast } from '../../types';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { UIState, Toast } from '../../types';
 
 const initialState: UIState = {
   sidebarCollapsed: false,

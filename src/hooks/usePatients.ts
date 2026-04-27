@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../store';
 import { fetchPatients, fetchPatientById, setViewMode, setSearchQuery, setFilterStatus, setFilterDepartment, setCurrentPage, filterPatients } from '../store/slices/patientsSlice';
-import { Patient, PatientStatus, ViewMode } from '../types';
+import type { Patient, PatientStatus, ViewMode } from '../types';
 
 const ITEMS_PER_PAGE = 9;
 

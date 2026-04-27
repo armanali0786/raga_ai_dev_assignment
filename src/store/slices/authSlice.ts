@@ -1,11 +1,12 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '../../config/firebase';
-import { AuthState, AuthUser } from '../../types';
+import type { AuthState, AuthUser } from '../../types';
 
 const initialState: AuthState = {
   user: null,

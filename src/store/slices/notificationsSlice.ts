@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { NotificationsState, AppNotification, NotificationType } from '../../types';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { NotificationsState, AppNotification, NotificationType } from '../../types';
 
 const initialState: NotificationsState = {
   items: [],
@@ -49,7 +50,7 @@ export const sendLocalNotification = createAsyncThunk<
       badge: '/vite.svg',
       tag: 'healthcare-notification',
       renotify: true,
-    });
+    } as any);
   } else {
     new Notification(title, { body: message, icon: '/vite.svg' });
   }

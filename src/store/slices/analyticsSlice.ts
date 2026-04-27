@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { AnalyticsState } from '../../types';
+import type { AnalyticsState } from '../../types';
 import { generateAnalyticsData } from '../../utils/mockData';
 
 const initialState: AnalyticsState = {

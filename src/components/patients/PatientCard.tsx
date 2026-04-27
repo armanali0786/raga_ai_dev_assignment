@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Patient, PatientStatus } from '../../types';
+import type { Patient, PatientStatus } from '../../types';
 
 const STATUS_CONFIG: Record<PatientStatus, { label: string; className: string }> = {
   active: { label: 'Active', className: 'status--active' },

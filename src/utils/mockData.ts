@@ -1,4 +1,4 @@
-import { Patient, PatientStatus, BloodGroup, Appointment } from '../types';
+import type { Patient, PatientStatus, BloodGroup, Appointment } from '../types';
 
 const DEPARTMENTS = [
   'Cardiology', 'Neurology', 'Orthopedics', 'Oncology',

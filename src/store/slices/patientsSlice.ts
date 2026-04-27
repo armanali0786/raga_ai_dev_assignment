@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { PatientsState, Patient, ViewMode, PatientStatus } from '../../types';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PatientsState, Patient, ViewMode, PatientStatus } from '../../types';
 import { generateMockPatients } from '../../utils/mockData';
 
 const ITEMS_PER_PAGE = 9;
