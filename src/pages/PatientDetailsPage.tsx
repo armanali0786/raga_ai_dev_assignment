@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { usePatientDetails } from '../hooks/usePatients';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { ErrorState } from '../components/common/ErrorBoundary';
-import { PatientStatus } from '../types';
+import type { PatientStatus } from '../types';
 
 const STATUS_CONFIG: Record<PatientStatus, { label: string; className: string }> = {
   active: { label: 'Active', className: 'status--active' },

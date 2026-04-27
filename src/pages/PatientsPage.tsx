@@ -4,7 +4,7 @@ import { PatientCard } from '../components/patients/PatientCard';
 import { PatientFilters, Pagination } from '../components/patients/PatientFilters';
 import { LoadingSpinner, PatientCardSkeleton } from '../components/common/LoadingSpinner';
 import { ErrorState } from '../components/common/ErrorBoundary';
-import { PatientStatus, ViewMode } from '../types';
+import type { PatientStatus, ViewMode } from '../types';
 
 const PatientsPage: React.FC = () => {
   const {

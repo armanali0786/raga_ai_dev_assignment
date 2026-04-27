@@ -10,7 +10,7 @@ import {
   registerServiceWorker,
   sendLocalNotification,
 } from '../store/slices/notificationsSlice';
-import { NotificationType } from '../types';
+import type { NotificationType } from '../types';
 
 export function useNotifications() {
   const dispatch = useAppDispatch();

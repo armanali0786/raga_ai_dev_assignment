@@ -5,7 +5,7 @@ import { usePatients } from '../hooks/usePatients';
 import { useAnalytics } from '../hooks/useAnalytics';
 import { useNotifications } from '../hooks/useNotifications';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
-import { Patient, PatientStatus } from '../types';
+import type { PatientStatus } from '../types';
 
 const STAT_CARDS = [
   {
