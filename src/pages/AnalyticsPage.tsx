@@ -87,11 +87,11 @@ const AnalyticsPage: React.FC = () => {
                   <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-              <XAxis dataKey="name" stroke="var(--color-text-muted)" tick={{ fontSize: 12 }} />
-              <YAxis stroke="var(--color-text-muted)" tick={{ fontSize: 12 }} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+              <XAxis dataKey="name" stroke="#94a3b8" tick={{ fontSize: 12, fill: '#64748b' }} />
+              <YAxis stroke="#94a3b8" tick={{ fontSize: 12, fill: '#64748b' }} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: 13, color: 'var(--color-text-muted)' }} />
+              <Legend wrapperStyle={{ fontSize: 13, color: '#64748b' }} />
               <Area type="monotone" dataKey="value" name="Admissions" stroke="#4F46E5" fill="url(#admGrad1)" strokeWidth={2.5} dot={{ r: 4, fill: '#4F46E5' }} />
               <Area type="monotone" dataKey="secondary" name="Discharges" stroke="#10B981" fill="url(#admGrad2)" strokeWidth={2.5} dot={{ r: 4, fill: '#10B981' }} />
             </AreaChart>
@@ -145,11 +145,11 @@ const AnalyticsPage: React.FC = () => {
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={revenueData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-              <XAxis dataKey="name" stroke="var(--color-text-muted)" tick={{ fontSize: 12 }} />
-              <YAxis stroke="var(--color-text-muted)" tick={{ fontSize: 12 }} tickFormatter={(v) => `₹${(v / 100000).toFixed(0)}L`} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
+              <XAxis dataKey="name" stroke="#94a3b8" tick={{ fontSize: 12, fill: '#64748b' }} />
+              <YAxis stroke="#94a3b8" tick={{ fontSize: 12, fill: '#64748b' }} tickFormatter={(v) => `₹${(v / 100000).toFixed(0)}L`} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: 13, color: 'var(--color-text-muted)' }} />
+              <Legend wrapperStyle={{ fontSize: 13, color: '#64748b' }} />
               <Line type="monotone" dataKey="value" name="Revenue" stroke="#4F46E5" strokeWidth={2.5} dot={{ r: 5, fill: '#4F46E5', strokeWidth: 2 }} activeDot={{ r: 7 }} />
               <Line type="monotone" dataKey="secondary" name="Expenses" stroke="#EF4444" strokeWidth={2.5} strokeDasharray="5 5" dot={{ r: 5, fill: '#EF4444', strokeWidth: 2 }} />
             </LineChart>
@@ -163,9 +163,9 @@ const AnalyticsPage: React.FC = () => {
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={departmentData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" horizontal={false} />
-              <XAxis type="number" stroke="var(--color-text-muted)" tick={{ fontSize: 12 }} />
-              <YAxis type="category" dataKey="name" stroke="var(--color-text-muted)" tick={{ fontSize: 11 }} width={72} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" horizontal={false} />
+              <XAxis type="number" stroke="#94a3b8" tick={{ fontSize: 12, fill: '#64748b' }} />
+              <YAxis type="category" dataKey="name" stroke="#94a3b8" tick={{ fontSize: 11, fill: '#64748b' }} width={72} />
               <Tooltip content={<CustomTooltip />} />
               <Bar dataKey="value" name="Patients" radius={[0, 4, 4, 0]}>
                 {departmentData.map((_, i) => (
