@@ -238,7 +238,7 @@ const LoginPage: React.FC = () => {
                 id="password"
                 name="password"
                 type={showPassword ? "text" : "password"}
-                className="form-field__input"
+                className="form-field__input form-field__input--has-toggle"
                 placeholder="Enter your password"
                 value={form.password}
                 onChange={handleChange}

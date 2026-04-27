@@ -460,6 +460,28 @@ input, select, textarea { font: inherit; color: inherit; }
   margin-top: 5px;
 }
 
+.form-field__toggle {
+  position: absolute;
+  right: 12px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-field__toggle:hover { color: var(--text-muted); }
+
+.form-field__input--has-toggle {
+  padding-right: 44px;
+}
+
 /* ─── Status Badges ──────────────────────────────────────────────────────── */
 
 .status-badge {
@@ -1780,6 +1802,39 @@ input, select, textarea { font: inherit; color: inherit; }
   letter-spacing: 0.1em;
 }
 
+.login-page__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md);
+  color: #b91c1c;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.login-page__error svg { flex-shrink: 0; margin-top: 2px; }
+
+.login-page__error span { flex: 1; }
+
+.login-page__error-close {
+  flex-shrink: 0;
+  color: #b91c1c;
+  opacity: 0.55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+  margin-top: 1px;
+}
+
+.login-page__error-close:hover { opacity: 1; }
+
 /* ─── Toasts ─────────────────────────────────────────────────────────────── */
 
 .toast-container {
@@ -1866,6 +1921,19 @@ input, select, textarea { font: inherit; color: inherit; }
 .text-muted { color: var(--text-muted); }
 .text-dim   { color: var(--text-dim); }
 
+/* ─── Sidebar Backdrop (mobile overlay) ─────────────────────────────────── */
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 49;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 1200px) {
@@ -1878,10 +1946,67 @@ input, select, textarea { font: inherit; color: inherit; }
   .dashboard__grid { grid-template-columns: 1fr; }
   .dashboard__panel--wide { grid-column: span 1; }
   .app-layout__content { padding: 20px; }
+  .dashboard__stats { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
+  /* Sidebar: fixed overlay on mobile */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base), width var(--transition-base);
+    box-shadow: var(--shadow-xl);
+    width: var(--sidebar-width) !important;
+  }
+
+  /* When sidebar is open (NOT collapsed) on mobile */
+  .app-layout:not(.app-layout--collapsed) .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Show backdrop when sidebar is open */
+  .app-layout:not(.app-layout--collapsed) .sidebar-backdrop {
+    display: block;
+  }
+
+  /* Main takes full width */
+  .app-layout__main { width: 100%; }
+
+  /* Header adjustments */
+  .header { padding: 0 16px; }
+  .header__user-info { display: none; }
+  .header__user-btn { padding: 6px; gap: 0; }
+
+  /* Content padding */
+  .app-layout__content { padding: 16px; }
+
+  /* Dashboard */
+  .dashboard__welcome { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .dashboard__stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .dashboard__grid { grid-template-columns: 1fr; }
+  .dashboard__panel--wide { grid-column: span 1; }
+
+  /* Analytics */
+  .analytics-page__charts { grid-template-columns: 1fr; }
+  .analytics-page__metrics { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* Patients */
+  .patient-filters { flex-direction: column; gap: 10px; }
+  .patient-filters__search { min-width: unset; width: 100%; }
+  .patients-list-wrap, .patients-list-header { overflow-x: auto; }
   .patient-details__profile { flex-direction: column; padding: 20px; }
   .patient-details__profile-stats { grid-template-columns: 1fr 1fr; min-width: unset; }
-  .patients-list-wrap, .patients-list-header { overflow-x: auto; }
+
+  /* Login */
+  .login-page__card { padding: 28px 20px; margin: 16px; }
+}
+
+@media (max-width: 480px) {
+  .dashboard__stats { grid-template-columns: 1fr; }
+  .analytics-page__metrics { grid-template-columns: 1fr; }
+  .header__title { font-size: 0.875rem; }
 }
