@@ -353,7 +353,7 @@ const PatientDetailsPage: React.FC = () => {
             </div>
 
             <div className="appt-list">
-              {patient.appointments
+              {[...patient.appointments]
                 .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                 .map((appt) => (
                   <div key={appt.id} className={`appt-row appt-row--${appt.status}`}>
